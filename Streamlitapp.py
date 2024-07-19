@@ -4,13 +4,13 @@ import traceback
 import pandas as pd
 from dotenv import load_dotenv
 from src.mcqgenerator.utilis import read_file,get_table_data
-import Streamlit as st
+import streamlit as st
 from langchain.callbacks import get_openai_callback
-from src.mcqgenerator.MCQGenerator import generate_evaluate_chain
+from src.mcqgenerator.mcqgenerator import generate_evaluate_chain
 from src.mcqgenerator.logger import logging
 
 
-with open('D:\NLP\MCQGEN\Response.json','r') as file:
+with open('Response.json','r') as file:
     RESPONSE_JSON  = json.load(file)
 
 st.title("MCQs Creator Apllication with Langchain")
@@ -59,7 +59,7 @@ with st.form("user_inputs"):
                             df.index = df.index+1
                             st.table(df)
                             st.text_area(label="Review",
-                                         value=response["Review"])
+                                         value=response["review"])
                         else:
                             st.error("Error in the table data")
 
